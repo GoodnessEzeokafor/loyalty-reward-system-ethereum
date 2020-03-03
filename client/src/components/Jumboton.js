@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import Nav from "./Nav"
+import Aux from "../hoc/aux";
+import { withRouter } from 'react-router-dom';
 
 
 
-const handleButton = (e) => {
 
-  console.log("Hello World!!")
-  e.preventDefault()
+
+class Jumbotron extends Component {
+  constructor(props) {
+    super(props);
+    this.memberHandleButton = this.memberHandleButton.bind(this)
+  }
+  
+
+  async  memberHandleButton(e) {
+    this.props.history.push('/member-signup')
+    e.preventDefault()
 }
-
-
-const Jumbotron = () => {
-    return(
+  
+  render() {
+    return (
+      <Aux>
+      <Nav/>
         <main role="main">
 
   {/* <!-- Main jumbotron for a primary marketing message or call to action --> */}
@@ -36,7 +49,7 @@ const Jumbotron = () => {
         <p><button 
           class="btn btn-danger" 
            type="button"
-           onClick={handleButton}>Connect With Metamask &raquo;</button></p>
+           onClick={this.memberHandleButton}>Connect With Metamask &raquo;</button></p>
       </div>
       <div class="col-md-6">
         <h2>Patners</h2>
@@ -53,9 +66,16 @@ const Jumbotron = () => {
   </div> 
   
 </main>
-
+</Aux>
+   
     );
-}
+  }
+} 
+// const Jumbotron = () => {
+//     return(
+//     );
+// }
 
-export default Jumbotron;
+// export default Jumbotron;
 
+export default withRouter(Jumbotron);

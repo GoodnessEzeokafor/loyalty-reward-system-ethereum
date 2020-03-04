@@ -1,7 +1,34 @@
 import React from 'react';
 import Nav from "./Nav"
 import Aux from "../hoc/aux"
-const PartnerSignUp = () => {
+import { withRouter } from 'react-router-dom';
+
+const PartnerSignUp = (props) => {
+
+  let organisation_name = null
+  let organisation_address = null
+  let email = null
+  let point = null
+
+  function handleSubmit(e){
+    try{
+      props.loyaltyDapp.methods.createPartner(
+        organisation_name.value,
+        organisation_address.value,
+        email.value,
+        parseInt(point.value, 10)
+      )
+      .send({from:props.account})
+      .once('receipt',(receipt) => {
+        this.setState({loading:false})
+        console.log(receipt)
+      })
+      props.history.push('/thank')   
+    }catch(e){
+      console.log(e)
+    }
+    e.preventDefault()
+  }
     return(
         <Aux>
         <Nav />
@@ -22,17 +49,24 @@ const PartnerSignUp = () => {
           {/* <!-- Example row of columns --> */}
           <div class="row">
             <div class="col-md-7">
-                <form>
+                <form onSubmit ={handleSubmit}>
                     <div class="form-group">
                       <label for="">Organisation Name</label>
                       <input type="text"
-                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Organisation Name" />
+                        class="form-control" 
+                        name="" 
+                        id="" aria-describedby="helpId" 
+                        placeholder="Organisation Name" 
+                        ref={(input) => organisation_name = input}/>
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                     <div class="form-group">
                       <label for="">Organisation Address</label>
                       <input type="text"
-                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Organisation Address" />
+                        class="form-control" name="" id="" aria-describedby="helpId" 
+                        placeholder="Organisation Address" 
+                        ref={(input) => organisation_address = input }
+                        />
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                     <div class="form-group">
@@ -40,7 +74,8 @@ const PartnerSignUp = () => {
                       <input 
                         type="email" 
                         class="form-control" name="" id="" aria-describedby="emailHelpId" 
-                        placeholder="Enter Email" />
+                        placeholder="Enter Email" 
+                        ref={(input) => email = input}/>
                       <small id="emailHelpId" class="form-text text-muted">Help text</small>
                     </div>
                     <div class="form-group">
@@ -48,11 +83,14 @@ const PartnerSignUp = () => {
                       <input 
                         type="text" 
                         class="form-control" name="" id="" aria-describedby="emailHelpId" 
-                        placeholder="Enter Points" />
+                        placeholder="Enter Points" 
+                        ref={(input) => point = input}/>
                       <small id="emailHelpId" class="form-text text-muted">Help text</small>
                     </div>
                     
-                    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" >Submit</button>
+                    <button
+                        type="submit" 
+                         name="" id="" class="btn btn-primary btn-lg btn-block" >Submit</button>
                 </form>
             </div>
           </div>
@@ -64,4 +102,4 @@ const PartnerSignUp = () => {
     )
 }
 
-export default PartnerSignUp;
+export default withRouter(PartnerSignUp);

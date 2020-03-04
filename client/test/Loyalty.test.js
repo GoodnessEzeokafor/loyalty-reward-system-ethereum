@@ -72,22 +72,32 @@ contract("Loyalty Smart Contract", ([dep, partner, member]) => {
             assert.equal(event.last_name,"LastName", "Organisation Address is correct")
             assert.equal(event.email,"email", "email is correct")
             assert.equal(event.phone_number,"908979", "point is correct")
-            assert.equal(event.point.toNumber(),0, "point is correct is correct")
         })
     })
 
     describe('#THIRD CHECKING PART', async() => {
         it("checks if earnPoint is working", async() => {
-            const earn = await this.contract.earnPoint(1,1, 20, {from:member})
+            const earn = await this.contract.earnPoint(1, 20, {from:member})
+            
             const partner = await this.contract.partners(1)
+            const memberPoint = await this.contract.points(member)
             const event = earn.logs[0].args
             assert.equal(event.updatedPartnerTotalPoints.toNumber(), 2980)
             assert.equal(event.updatedMemberPoint.toNumber(), 20)
             // const member =await this.contract.members(1)
-            console.log("PARTNER Point:",partner.totalPoints.toString())
+            // console.log("PARTNER Point:",partner.totalPoints.toString())
+            // console.log("Member Point:", memberPoint.toString())
             // console.log("MEMBER Point:",member.point)
             // assert.equal(partner.totalPoints.toString(), 2980)
         })
+        it("checks if the earnPoint is working again", async() => {
+            const earn = await this.contract.earnPoint(1, 50, {from:member})
+            const partner = await this.contract.partners(1)
+            const memberPoint = await this.contract.points(member)
+            const event = earn.logs[0].args
+            assert.equal(event.updatedPartnerTotalPoints.toNumber(), 2930)
+            assert.equal(event.updatedMemberPoint.toNumber(), 70)
+
+        })
     })
-    
 })

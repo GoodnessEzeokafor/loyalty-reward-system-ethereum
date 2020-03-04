@@ -33,7 +33,7 @@ const MemberSignUp = (props) => {
     this.setState({loading:false})
     console.log(receipt)
   })
-  props.history.push('/thank')
+  props.history.push('/member-dashboard')
 
   }catch(e){
     console.log(e)

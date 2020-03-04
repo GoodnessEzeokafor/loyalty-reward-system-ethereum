@@ -4,6 +4,9 @@ import Jumbotron from "./components/Jumboton"
 import MemberSignUp from "./components/MemberSignUp"
 import PartnerSignUp from "./components/PartnerSignUp"
 import Thank from "./components/Thanks"
+import MemberDashboard from "./components/MemberDashboard"
+import PartnerDashboard from "./components/PartnerDashboard"
+
 import { 
   Link,
   Route,
@@ -70,8 +73,10 @@ export default class App extends Component {
       // // console.log("Contract:", this.state.productDapp)
       const partnerCount = await loyaltyDapp.methods.partnerCount().call() 
       const memberCount = await loyaltyDapp.methods.memberCount().call()
+      const points = await loyaltyDapp.methods.points(this.state.account).call()
       this.setState({partnerCount})
       this.setState({memberCount})
+      this.setState({points})
       // this.setState({buyerCount})
       // this.setState({transportCompanyCount})
 
@@ -109,7 +114,8 @@ export default class App extends Component {
     this.state = {
       account:'',
       partners:[],
-      members:[]
+      members:[],
+      points:0
     }
   }
   render() {
@@ -129,6 +135,23 @@ export default class App extends Component {
                         account = {this.state.account}
                   />
               </Route>
+              <Route path ="/member-dashboard">
+              <MemberDashboard 
+                        loyaltyDapp ={this.state.loyaltyDapp}
+                        account = {this.state.account}
+                        points={this.state.points}
+                        partners={this.state.partners}
+                  />
+              </Route>
+              <Route path ="/partner-dashboard/:id">
+              <PartnerDashboard 
+                        loyaltyDapp ={this.state.loyaltyDapp}
+                        account = {this.state.account}
+                        points={this.state.points}
+                        partners={this.state.partners}
+                  />
+              </Route>
+              
               <Route path="/thank">
                 <Thank />
               </Route>

@@ -153,8 +153,9 @@ contract Loyalty{
     uint256 public memberCount = 0;
     string public dapp_name;
     string public dapp_builder;
-    mapping(uint => Partner) public partners;
-    mapping(uint => Member) public members;
+    mapping(uint256 => Partner) public partners;
+    mapping(uint256 => Member) public members;
+    mapping(address => uint256) public points;
 
     constructor() public{
         dapp_name="Loyalty And Reward System";
@@ -177,7 +178,7 @@ contract Loyalty{
         string last_name;
         string email;
         string phone_number;
-        uint256 point;
+        // uint256 point;
         address payable tx_address;
     }
 
@@ -199,7 +200,7 @@ contract Loyalty{
         string last_name,
         string email,
         string phone_number,
-        uint256 point,
+        // uint256 point,
         address payable tx_address
     );
     event Redeem(
@@ -252,7 +253,7 @@ contract Loyalty{
             last_name,
             email,
             phone_number,
-            0,
+            // 0,
             msg.sender
         );
         emit MemberCreated(
@@ -261,22 +262,43 @@ contract Loyalty{
             last_name,
             email,
             phone_number,
-            0,
+            // 0,
             msg.sender
        );
     }
 
-    function earnPoint(uint256 _patid, uint256 _memId ,uint256 point)public{
+    function earnPoint(
+            uint256 _patid, 
+            // uint256 _memId,
+            uint256 point
+        )public{
         Partner memory p = partners[_patid];
-        Member memory m = members[_memId];
+        // Member memory m = members[_memId];
         require(point < p.totalPoints, "Not Enough Points");
         p.totalPoints = partners[_patid].totalPoints.sub(point);
-        m.point = members[_memId].point.add(point);
+        points[msg.sender] = points[msg.sender].add(point);
+        // m.point = members[_memId].point.add(point);
         partners[_patid] = p;
-        members[_memId] = m;
+        // members[_memId] = m;
         emit EarnPoint(
             p.totalPoints,
-            m.point
+            // m.point
+            points[msg.sender]
+        );
+    }
+
+    function getPartner(uint256 _id)public view returns(
+        string memory ,
+        string memory,
+        string memory,
+        uint256
+    ){
+        Partner memory p = partners[_id];
+        return(
+            p.organisation_name,
+            p.organisation_address,
+            p.email,
+            p.totalPoints
         );
     }
 

@@ -49,7 +49,7 @@ class Jumbotron extends Component {
         <p><button 
           class="btn btn-danger" 
            type="button"
-           onClick={this.memberHandleButton}>Connect With Metamask &raquo;</button></p>
+           onClick={this.memberHandleButton}>Member Signup &raquo;</button></p>
       </div>
       <div class="col-md-6">
         <h2>Patners</h2>
@@ -57,7 +57,7 @@ class Jumbotron extends Component {
           For companies part of the program, they can register as Partner on the network by connecting with Metamask wallet
 
         </p>
-        <p><a class="btn btn-danger" href="#" role="button">Connect With Metamask &raquo;</a></p>
+        <p><a class="btn btn-danger" href="#" role="button">Patners Signup &raquo;</a></p>
       </div>
     </div>
 

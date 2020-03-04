@@ -1,7 +1,47 @@
 import React from 'react';
-import Nav from "./Nav"
-import Aux from "../hoc/aux"
-const MemberSignUp = () => {
+import Nav from "./Nav";
+import Aux from "../hoc/aux";
+import { withRouter } from 'react-router-dom';
+
+
+
+
+const MemberSignUp = (props) => {
+
+
+
+  let first_name = null
+  let last_name = null
+  let email = null
+  let phone_number = null
+
+  // hanle form
+  function handleSubmit(e){
+  console.log(first_name.value)
+  console.log(last_name.value)
+  console.log(email.value)
+  try{
+
+  props.loyaltyDapp.methods.createmember(
+    first_name.value,
+    last_name.value,
+    email.value,
+    phone_number.value
+  )
+  .send({from:props.account})
+  .once('receipt',(receipt) => {
+    this.setState({loading:false})
+    console.log(receipt)
+  })
+  props.history.push('/thank')
+
+  }catch(e){
+    console.log(e)
+  }
+ e.preventDefault() 
+}
+
+
     return(
         <Aux>
         <Nav />
@@ -22,17 +62,32 @@ const MemberSignUp = () => {
           {/* <!-- Example row of columns --> */}
           <div class="row">
             <div class="col-md-7">
-                <form>
+                <form onSubmit={handleSubmit} >
                     <div class="form-group">
                       <label for="">First Name</label>
                       <input type="text"
-                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter First Name" />
+                        class="form-control" 
+                        name="" 
+                        id="" 
+                        aria-describedby="helpId" 
+                        placeholder="Enter First Name"
+                        required
+                        ref = {(input) => first_name = input}
+                        />
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                     <div class="form-group">
                       <label for="">Last Name</label>
                       <input type="text"
-                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter Last Name" />
+                        class="form-control" 
+                        name=""
+                        id="" 
+                        aria-describedby="helpId" 
+                        placeholder="Enter Last Name" 
+                                                required
+
+                        ref = {(input) => last_name = input}
+                        />
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                     <div class="form-group">
@@ -40,10 +95,32 @@ const MemberSignUp = () => {
                       <input 
                         type="email" 
                         class="form-control" name="" id="" aria-describedby="emailHelpId" 
-                        placeholder="Enter Email" />
+                        placeholder="Enter Email" 
+                            required
+
+                        ref={(input) => email = input}
+                        />
                       <small id="emailHelpId" class="form-text text-muted">Help text</small>
                     </div>
-                    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" >Submit</button>
+                    <div class="form-group">
+                      <label for=""></label>
+                      <input 
+                        type="text" 
+                        class="form-control" name="" id="" aria-describedby="emailHelpId" 
+                        placeholder="Enter Phone" 
+                            required
+
+                        ref={(input) => phone_number = input}
+                        />
+                      <small id="emailHelpId" class="form-text text-muted">Help text</small>
+                    </div>
+                    <button 
+                      type="submit" 
+                      name="" 
+                      id="" 
+                      class="btn btn-primary btn-lg btn-block" 
+                      
+                      >Submit</button>
                 </form>
             </div>
           </div>
@@ -55,4 +132,4 @@ const MemberSignUp = () => {
     )
 }
 
-export default MemberSignUp;
+export default withRouter(MemberSignUp);

@@ -12,12 +12,18 @@ class Jumbotron extends Component {
   constructor(props) {
     super(props);
     this.memberHandleButton = this.memberHandleButton.bind(this)
+    this.patnerHandleButton = this.patnerHandleButton.bind(this)
   }
   
 
   async  memberHandleButton(e) {
     this.props.history.push('/member-signup')
     e.preventDefault()
+}
+
+async patnerHandleButton(e){
+  this.props.history.push('/patner-signup')
+  e.preventDefault()
 }
   
   render() {
@@ -29,7 +35,7 @@ class Jumbotron extends Component {
   {/* <!-- Main jumbotron for a primary marketing message or call to action --> */}
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Customer Reweard System</h1>
+      <h1 class="display-3">Customer Reward System</h1>
       <p>   
         This web application demonstrates a customer loyalty program on the blockchain using ethereum & solidity
       </p>
@@ -57,7 +63,12 @@ class Jumbotron extends Component {
           For companies part of the program, they can register as Partner on the network by connecting with Metamask wallet
 
         </p>
-        <p><a class="btn btn-danger" href="#" role="button">Patners Signup &raquo;</a></p>
+        <p><button 
+            class="btn btn-danger" 
+            href="#" 
+            type="button"
+            onClick={this.patnerHandleButton}
+            >Patners Signup &raquo;</button></p>
       </div>
     </div>
 

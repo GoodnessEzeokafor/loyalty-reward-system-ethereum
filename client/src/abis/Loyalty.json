@@ -12957,6 +12957,186 @@
       "links": {},
       "address": "0xA7C8749C94C2720CA16A15f69bff1dE58c62f505",
       "transactionHash": "0x07f8fea675d5155013f7f74ca1cec9e68b601a9484880c53ef67bc2fd97cb677"
+    },
+    "42": {
+      "events": {
+        "0x6018b619665aa9a9dc998d7741f731b8dec8f1d626465a07573ef6c593f43dfa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "updatedPartnerTotalPoints",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "updatedMemberPoint",
+              "type": "uint256"
+            }
+          ],
+          "name": "EarnPoint",
+          "type": "event"
+        },
+        "0xa0c7619abca438b8f1840aeae6399ad201a207fce257caf517c248da648f1c7d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "first_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "last_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "phone_number",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "point",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "tx_address",
+              "type": "address"
+            }
+          ],
+          "name": "MemberCreated",
+          "type": "event"
+        },
+        "0xad1b8d1752c0ff218534b9ebea38608c654810b2c0a07b9ea3492a50fcc07875": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "organisation_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "organisation_address",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "totalPoints",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "organisation_tx_address",
+              "type": "address"
+            }
+          ],
+          "name": "PartnerCreated",
+          "type": "event"
+        },
+        "0x2800a4729d36afb7168f8b245bb53126594917a3371cb9c59f3305851087475a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "first_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "last_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "phone_number",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "address payable",
+              "name": "tx_address",
+              "type": "address"
+            }
+          ],
+          "name": "MemberCreated",
+          "type": "event"
+        },
+        "0x222838db2794d11532d940e8dec38ae307ed0b63cd97c233322e221f998767a6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address payable",
+              "name": "member_addres",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Redeem",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x4ed849a1a710a23bf330f7df5bd50534b82bdc48",
+      "transactionHash": "0xc79591ba262cf652a0f849f3353c787b68c8c320748b1417f69fd5a8fdd102f5"
     }
   },
   "schemaVersion": "3.0.23",

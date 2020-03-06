@@ -10,7 +10,7 @@ const Nav = () => {
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div className="container">
 
-  <Link class="navbar-brand" to="/">Loyalty Reward System</Link>
+  <Link class="navbar-brand" to="/">LoyalChain</Link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

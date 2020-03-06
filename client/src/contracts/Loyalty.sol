@@ -203,15 +203,17 @@ contract Loyalty{
         // uint256 point,
         address payable tx_address
     );
-    event Redeem(
-        address payable member_addres, 
-        uint256 value
-    );
+    // event Redeem(
+    //     address payable member_addres, 
+    //     uint256 value
+    // );
 
     event EarnPoint(
         uint256 updatedPartnerTotalPoints,
         uint256 updatedMemberPoint
     );
+
+
     function createPartner(
         string memory organisation_name,
         string memory organisation_address,
@@ -272,6 +274,7 @@ contract Loyalty{
             // uint256 _memId,
             uint256 point
         )public{
+
         Partner memory p = partners[_patid];
         // Member memory m = members[_memId];
         require(point < p.totalPoints, "Not Enough Points");
@@ -287,20 +290,20 @@ contract Loyalty{
         );
     }
 
-    function getPartner(uint256 _id)public view returns(
-        string memory ,
-        string memory,
-        string memory,
-        uint256
-    ){
-        Partner memory p = partners[_id];
-        return(
-            p.organisation_name,
-            p.organisation_address,
-            p.email,
-            p.totalPoints
-        );
-    }
+    // function getPartner(uint256 _id)public view returns(
+    //     string memory ,
+    //     string memory,
+    //     string memory,
+    //     uint256
+    // ){
+    //     Partner memory p = partners[_id];
+    //     return(
+    //         p.organisation_name,
+    //         p.organisation_address,
+    //         p.email,
+    //         p.totalPoints
+    //     );
+    // }
 
     // function redeemPoint(uint256 _memId, uint256 value) public payable{
     //     Member memory m = members[_memId];

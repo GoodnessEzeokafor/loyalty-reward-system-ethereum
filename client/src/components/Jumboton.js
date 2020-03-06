@@ -35,7 +35,7 @@ async patnerHandleButton(e){
   {/* <!-- Main jumbotron for a primary marketing message or call to action --> */}
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Customer Reward System</h1>
+      <h1 class="display-3">LoyalChain</h1>
       <p>   
         This web application demonstrates a customer loyalty program on the blockchain using ethereum & solidity
       </p>
